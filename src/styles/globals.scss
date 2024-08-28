@@ -47,8 +47,16 @@ body {
 
 .loginWrapper {
 
-  //background: red;
+  &__title{
+    font-size: 48px;
+    margin-bottom: 32px;
+    text-align: center;
 
+    @media(max-width: 768px){
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+  }
 }
 
 .form-control {
@@ -78,10 +86,14 @@ body {
     //border: 1px solid ;
     color: var(--tertiary-color);
   }
+
+  &.onError{
+    border: 2px solid var(--primary-color);
+  }
 }
 
 .form-check-input[type=checkbox] {
-  background-color: var(--tertiary-color);
+  background-color: var(--input-bg);
   border: 0;
 
   &:focus {
@@ -180,7 +192,13 @@ body {
 
 .pageTitle{
   font-size: 48px;
+  margin-bottom: 32px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
 }
 
 
@@ -200,6 +218,7 @@ body {
     background-color: var(--input-bg);
     border-radius: 10px;
     border: 2px dashed #ffffff;
+    margin-bottom: 24px;
   }
 
   .previewImg{

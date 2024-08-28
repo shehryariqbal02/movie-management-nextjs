@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import {toast} from "react-toastify";
 import { useState } from 'react';
 import Link from "next/link";
+import {DeleteIcon} from "../../components/Icons";
 
 /**
  *
@@ -67,6 +68,14 @@ export default function CreateMovie() {
             <Container>
                 <h2 className="pageTitle pb-5 mb-5">Create a new movie </h2>
                 <Row>
+                   <div className="d-md-none d-block">
+                       <Form.Group className="mb-4">
+                           <Form.Control className="w-100" value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Title" />
+                       </Form.Group>
+                       <Form.Group className="mb-4">
+                           <Form.Control className="w-100" type="number" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} placeholder="Publishing year" />
+                       </Form.Group>
+                   </div>
                     <Col lg={5}>
                         {!imagePreview &&
                             <div  {...getRootProps({className: 'dropzone uploadImg'})}>
@@ -78,20 +87,22 @@ export default function CreateMovie() {
                             </div>
                         }
                         {imagePreview && (
-                            <div>
-                                <img src={imagePreview} alt="Preview" style={{maxWidth: '100%', marginTop: '10px'}}/>
-                                <span onClick={()=> setImagePreview(null)}>delete</span>
+                            <div className="previewImg">
+                                <img src={imagePreview} alt="Preview"/>
+                                <span onClick={()=> setImagePreview(null)}><DeleteIcon /></span>
                             </div>
                         )}
                     </Col>
 
                     <Col lg={4}>
-                        <Form.Group className="mb-4">
-                            <Form.Control className="w-100" value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Title" />
-                        </Form.Group>
-                        <Form.Group className="mb-5">
-                            <Form.Control type="number" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} placeholder="Publishing year" />
-                        </Form.Group>
+                        <div className="d-none d-md-block">
+                            <Form.Group className="mb-4">
+                                <Form.Control className="w-100" value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Title" />
+                            </Form.Group>
+                            <Form.Group className="mb-5">
+                                <Form.Control type="number" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} placeholder="Publishing year" />
+                            </Form.Group>
+                        </div>
                         <div className="d-flex justify-content-between gap-3">
                             <Link href={'/movies'}  className="w-100">
                                 <Button className="w-100" variant="primary">Cancel</Button>

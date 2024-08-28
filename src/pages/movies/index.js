@@ -59,7 +59,7 @@ export default function Movies() {
 
                                 </h2>
                                 <Button className="fw-bold border-0" onClick={logoutUser}>
-                                    Logout
+                                    <span className="d-none d-lg-inline">Logout</span>
                                     <span className="ms-2">
                         <ExitIcon/>
                     </span>
@@ -124,7 +124,7 @@ export default function Movies() {
                             </Pagination>
                         </>
                         :
-                        <div className="mx-auto tex text-center">
+                        <div className="mx-auto tex text-center mb-4">
                             <h2 className="pageTitle">Your movie list is empty</h2>
                             <Link href={"movies/create"}>
                                 <Button variant="secondary">Add a new movie</Button>

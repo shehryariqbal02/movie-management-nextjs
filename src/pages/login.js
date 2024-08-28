@@ -31,12 +31,17 @@ export default function Login() {
      */
     const handleSubmit = async (e) => {
         e.preventDefault();
+        let emailElement = document.getElementById("email");
+        let passwordElement = document.getElementById("password");
+        emailElement.classList.remove('onError');
+        passwordElement.classList.remove('onError');
         if (email === ""){
             toast.error("Email is required");
+            emailElement.classList.add('onError');
             return false;
         }
         if (password === ""){
-            toast.error("Password is required");
+            passwordElement.classList.add('onError');
             return false;
         }
         await loginUser({ email, password });
@@ -46,11 +51,11 @@ export default function Login() {
             <h1 className="loginWrapper__title">Sign In</h1>
             <Form className="pb-5" onSubmit={handleSubmit}>
                 <Form.Group className="mb-4">
-                    <Form.Control type="email" value={email} placeholder="Email"
+                    <Form.Control type="email" value={email} id={"email"} placeholder="Email"
                                   onChange={(e) => setEmail(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-4">
-                    <Form.Control type="password" value={password} placeholder="Password"
+                    <Form.Control type="password" id={"password"} value={password} placeholder="Password"
                                   onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="d-flex justify-content-center gap-2 mb-4">

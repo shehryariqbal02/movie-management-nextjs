@@ -84,6 +84,14 @@ export default function EditMovie() {
             <Container>
                 <h2 className="pageTitle pb-5 mb-5">Edit</h2>
                 <Row>
+                    <div className="d-md-none d-block">
+                        <Form.Group className="mb-4">
+                            <Form.Control className="w-100" type="text" value={name} onChange={(e) => setName(e.target.value)}  placeholder="Title" />
+                        </Form.Group>
+                        <Form.Group className="mb-4">
+                            <Form.Control className="w-100" type="number" placeholder="Publishing year" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} />
+                        </Form.Group>
+                    </div>
                     <Col lg={5} md={12}>
                         {!imagePreview &&
                             <div  {...getRootProps({className: 'dropzone uploadImg'})}>
@@ -102,12 +110,14 @@ export default function EditMovie() {
                         )}
                     </Col>
                     <Col lg={4} md={12}>
-                        <Form.Group className="mb-4">
-                            <Form.Control className="w-100" type="text" value={name} onChange={(e) => setName(e.target.value)}  placeholder="Title" />
-                        </Form.Group>
-                        <Form.Group className="mb-5">
-                            <Form.Control type="number" placeholder="Publishing year" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} />
-                        </Form.Group>
+                        <div className="d-none d-md-block">
+                            <Form.Group className="mb-4">
+                                <Form.Control className="w-100" type="text" value={name} onChange={(e) => setName(e.target.value)}  placeholder="Title" />
+                            </Form.Group>
+                            <Form.Group className="mb-5">
+                                <Form.Control type="number" placeholder="Publishing year" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} />
+                            </Form.Group>
+                        </div>
                         <div className="d-flex justify-content-between gap-3">
                             <Link href={'/movies'}  className="w-100">
                                 <Button className="w-100" variant="primary">Cancel</Button>
